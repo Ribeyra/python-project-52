@@ -1,4 +1,3 @@
-# hexlet_django_blog/views.py
 from django.shortcuts import render
 
 
