@@ -13,6 +13,7 @@ dj-database-url = "^2.2.0"
 psycopg2-binary = "^2.9.9"
 gunicorn = "^22.0.0"
 uvicorn = "^0.30.1"
+whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 
 
 [build-system]
