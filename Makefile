@@ -6,3 +6,7 @@ dev-start:
 
 build:
 	./build.sh
+
+dev-build:
+	poetry install
+	poetry run python manage.py migrate
