@@ -7,7 +7,7 @@ set -o errexit
 poetry install
 
 # Convert static asset files
-poetry run python manage.py collectstatic --no-input
+# poetry run python manage.py collectstatic --no-input пока не использую
 
 # Apply any outstanding database migrations
 poetry run python manage.py migrate
