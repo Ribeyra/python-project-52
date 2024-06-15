@@ -21,7 +21,7 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 #: task_manager/templates/create_user.html:5
 msgid "There will be a user creation form here"
-msgstr "Здесь будет форма для создания пользователя n18i"
+msgstr "Здесь будет форма для создания пользователя"
 
 #: task_manager/templates/index.html:8
 msgid "surprise motherf***er"
