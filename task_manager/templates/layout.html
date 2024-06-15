@@ -2,7 +2,7 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ request.LANGUAGE_CODE|default:'en' }}">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% trans "Task Manager" %}</title>
