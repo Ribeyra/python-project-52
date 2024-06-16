@@ -1,14 +1,10 @@
-from django.shortcuts import redirect, render   # noqa f401
+from django.shortcuts import render
 from django.views import View
 
 
-def index(request):
-    return render(request, 'index.html', context={})
-
-
-class Login(View):
+class CreateUser(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'login.html', {})
+        return render(request, 'users/create_user.html', {})
 
     """ def post(self, request, *args, **kwargs):
         form = ArticleForm(request.POST)
@@ -20,3 +16,7 @@ class Login(View):
         # Если данные некорректные, то возвращаем человека обратно на
         # страницу с заполненной формой
         return render(request, 'login.html', {'form': form}) """
+
+
+def users(request):
+    return render(request, 'users/users.html', context={})
