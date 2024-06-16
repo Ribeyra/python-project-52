@@ -17,6 +17,10 @@ whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 django-bootstrap5 = "^24.2"
 
 
+[tool.poetry.group.dev.dependencies]
+django-extensions = "^3.2.3"
+ipython = "^8.25.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

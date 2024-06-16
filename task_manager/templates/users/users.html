@@ -2,7 +2,30 @@
 {% load i18n %}
 
 {% block content %}
-<h1 class="my-4"></h1>
-<h1 class="my-4">{% trans "There will be a list of users here" %}</h1>
-
+<h1 class="my-4">Пользователи</h1>
+    
+    <div class="table table-striped"></div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя пользователя</th>
+                    <th>Полное имя</th>
+                    <th>Дата создания</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.date_joined|date:"d.m.Y" }} {{ user.date_joined|time:"H:i" }}</td>
+                    <td>Пустое поле</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
 {% endblock %}
