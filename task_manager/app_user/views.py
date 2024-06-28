@@ -1,26 +1,56 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
-from task_manager.app_user.models import User
+from .models import User
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 class CreateUser(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'users/create_user.html', {})
+        form = CustomUserCreationForm()
+        return render(request, 'users/create.html', {'form': form})
 
-    """ def post(self, request, *args, **kwargs):
-        form = ArticleForm(request.POST)
-        # Если данные корректные, то сохраняем данные формы
+    def post(self, request, *args, **kwargs):
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            # Редирект на указанный маршрут
-            return redirect('index')
-        # Если данные некорректные, то возвращаем человека обратно на
-        # страницу с заполненной формой
-        return render(request, 'login.html', {'form': form}) """
+            return redirect('users')
+        return render(request, 'users/create.html', {'form': form})
+
+
+class UpdateUser(View):
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs['id']
+        user = get_object_or_404(User, id=user_id)
+        form = CustomUserChangeForm(instance=user)
+        return render(
+            request,
+            'users/update.html',
+            {'form': form, 'id': user_id}
+        )
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs['id']
+        user = get_object_or_404(User, id=user_id)
+        form = CustomUserChangeForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('users')
+        return render(
+            request,
+            'users/update.html',
+            {'form': form, 'id': user_id}
+        )
+
+    # def post(self, request, *args, **kwargs):
+    #     form = CustomUserCreationForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('users')
+    #     return render(request, 'users/update.html', {'form': form, 'id': id})
 
 
 def users(request):
     users = User.objects.values(
         'id', 'first_name', 'last_name', 'username', 'date_joined'
     ).all()
-    return render(request, 'users/users.html', context={'users': users})
+    return render(request, 'users/index.html', context={'users': users})

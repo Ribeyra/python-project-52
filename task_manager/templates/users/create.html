@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+{% trans "Sign Up" as signup_text %}
+
+<h1 class="my-4">{{ signup_text }}</h1>
+
+<form action="{% url 'create_user' %}" method="post" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% bootstrap_button button_type="submit" content=signup_text %}
+    
+</form>
+{% endblock %}

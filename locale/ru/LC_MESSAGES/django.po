@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-15 18:39+0300\n"
+"POT-Creation-Date: 2024-06-25 15:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,24 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: task_manager/templates/create_user.html:5
-msgid "There will be a user creation form here"
-msgstr "Здесь будет форма для создания пользователя"
 
-#: task_manager/templates/index.html:8
+#: task_manager/app_user/forms.py:9
+msgid "First name"
+msgstr "Имя"
+
+#: task_manager/app_user/forms.py:13
+msgid "Last name"
+msgstr "Фамилия"
+
+#: task_manager/templates/index.html:9
 msgid "surprise motherf***er"
 msgstr "Добрый день!"
 
-#: task_manager/templates/index.html:10
+#: task_manager/templates/index.html:11
 msgid "I also have github"
 msgstr "Еще у меня есть github"
 
-#: task_manager/templates/index.html:12
+#: task_manager/templates/index.html:13
 msgid "learn more"
 msgstr "Узнать больше"
 
@@ -40,6 +45,7 @@ msgid "Task Manager"
 msgstr "Менеджер задач"
 
 #: task_manager/templates/layout.html:21
+#: task_manager/templates/users/users.html:5
 msgid "Users"
 msgstr "Пользователи"
 
@@ -48,13 +54,30 @@ msgid "Login"
 msgstr "Вход"
 
 #: task_manager/templates/layout.html:31
+#: task_manager/templates/users/create_user.html:7
 msgid "Sign Up"
-msgstr "Регистрация"
+msgstr "Зарегистрировать"
 
-#: task_manager/templates/login.html:5
+#: task_manager/templates/login.html:6
 msgid "There will be a login form here"
 msgstr "Здесь будет форма для входа"
 
-#: task_manager/templates/users.html:5
-msgid "There will be a list of users here"
-msgstr "Здесь будет список пользователей"
+#: task_manager/templates/users/users.html:12
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Пользователи"
+
+#: task_manager/templates/users/users.html:13
+msgid "Full name"
+msgstr "Полное имя"
+
+#: task_manager/templates/users/users.html:14
+msgid "Created at"
+msgstr "Дата создания"
+
+#~ msgid "There will be a user creation form here"
+#~ msgstr "Здесь будет форма для создания пользователя"
+
+#~ msgid "There will be a list of users here"
+#~ msgstr "Здесь будет список пользователей"
