@@ -8,12 +8,12 @@
 
 <h1 class="my-4">{{ signup_text }}</h1>
 
-<form action="{% url 'create_user' %}" method="post" class="form">
+<form action="{% url 'user_create' %}" method="post" class="form">
     {% csrf_token %}
 
     {% bootstrap_form form %}
 
-    {% bootstrap_button button_type="submit" content=signup_text %}
+    <input class="btn btn-primary" type="submit" value="{{ signup_text }}">
     
 </form>
 {% endblock %}

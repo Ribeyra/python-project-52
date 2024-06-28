@@ -41,16 +41,27 @@ class UpdateUser(View):
             {'form': form, 'id': user_id}
         )
 
-    # def post(self, request, *args, **kwargs):
-    #     form = CustomUserCreationForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('users')
-    #     return render(request, 'users/update.html', {'form': form, 'id': id})
+
+class DeleteUser(View):
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs['id']
+        user = get_object_or_404(User, id=user_id)
+        return render(
+            request,
+            'users/delete.html',
+            {'user': user}
+        )
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs['id']
+        user = get_object_or_404(User, id=user_id)
+        if user:
+            user.delete()
+        return redirect('users')
 
 
 def users(request):
     users = User.objects.values(
         'id', 'first_name', 'last_name', 'username', 'date_joined'
-    ).all()
+    ).order_by('id')
     return render(request, 'users/index.html', context={'users': users})

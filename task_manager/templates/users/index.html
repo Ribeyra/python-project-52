@@ -22,7 +22,11 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.first_name }} {{ user.last_name }}</td>
                     <td>{{ user.date_joined|date:"d.m.Y" }} {{ user.date_joined|time:"H:i" }}</td>
-                    <td><a href="{% url 'update_user' user.id %}">{% trans "Update" %}</a></td>
+                    <td>
+                        <a href="{% url 'user_update' user.id %}">{% trans "Update" %}</a>
+                        <br>
+                        <a href="{% url 'user_delete' user.id %}">{% trans "Delete" %}</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
