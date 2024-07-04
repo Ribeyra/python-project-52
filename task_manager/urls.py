@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .app_user.forms import CustomAuthenticationForm
 from task_manager import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('login/', views.Login.as_view(), name='login'),
+    path('login/', views.CustomLoginView.as_view(
+        template_name='login.html',
+        authentication_form=CustomAuthenticationForm
+    ), name='login'),
+    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('users/', include('task_manager.app_user.urls')),
     path('admin/', admin.site.urls),
 ]

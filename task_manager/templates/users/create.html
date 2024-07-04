@@ -4,9 +4,9 @@
 
 {% block content %}
 
-{% trans "Sign Up" as signup_text %}
+{% trans "SignUp" as signup_text %}
 
-<h1 class="my-4">{{ signup_text }}</h1>
+<h1 class="my-4">{% trans "Sign Up" %}</h1>
 
 <form action="{% url 'user_create' %}" method="post" class="form">
     {% csrf_token %}

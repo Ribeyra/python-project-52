@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 # from django.utils.translation import gettext_lazy
+from django.contrib.messages import constants as messages
 from pathlib import Path
 import dj_database_url
 import dotenv
@@ -85,6 +86,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -117,6 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'app_user.User'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm  # noqa f401
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm # noqa f401
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from .models import User
 
@@ -59,3 +59,14 @@ class CustomUserChangeForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    password_label = _("Password")
+    password = forms.CharField(
+        label=password_label,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'})
+    )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-25 15:12+0300\n"
+"POT-Creation-Date: 2024-07-04 19:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,37 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/app_user/forms.py:9
+#: task_manager/app_user/forms.py:9 task_manager/app_user/forms.py:30
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/app_user/forms.py:13
+#: task_manager/app_user/forms.py:13 task_manager/app_user/forms.py:34
 msgid "Last name"
 msgstr "Фамилия"
+
+#: task_manager/app_user/forms.py:68
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/app_user/views.py:20
+msgid "User successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/app_user/views.py:35
+msgid "User successfully updated"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/app_user/views.py:53
+msgid "User deleted successfully"
+msgstr "Пользователь успешно удален"
+
+#: task_manager/mixins.py:13
+msgid "You are not authorized! Please log in"
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
+
+#: task_manager/mixins.py:22
+msgid "You do not have permission to change another user"
+msgstr "У вас нет прав для изменения другого пользователя"
 
 #: task_manager/templates/index.html:9
 msgid "surprise motherf***er"
@@ -45,39 +69,82 @@ msgid "Task Manager"
 msgstr "Менеджер задач"
 
 #: task_manager/templates/layout.html:21
-#: task_manager/templates/users/users.html:5
+#: task_manager/templates/users/index.html:5
 msgid "Users"
 msgstr "Пользователи"
 
 #: task_manager/templates/layout.html:28
+msgid "Statuses"
+msgstr "Статусы"
+
+#: task_manager/templates/layout.html:31
+msgid "Tags"
+msgstr "Метки"
+
+#: task_manager/templates/layout.html:34
+msgid "Tasks"
+msgstr "Задачи"
+
+#: task_manager/templates/layout.html:42
+msgid "Logout"
+msgstr "Выход"
+
+#: task_manager/templates/layout.html:51 task_manager/templates/login.html:7
+#: task_manager/templates/users/login.html:7
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/layout.html:31
-#: task_manager/templates/users/create_user.html:7
+#: task_manager/templates/layout.html:54
+#: task_manager/templates/users/create.html:9
 msgid "Sign Up"
+msgstr "Регистрация"
+
+#: task_manager/templates/login.html:16
+#: task_manager/templates/users/login.html:16
+msgid "Log In"
+msgstr "Войти"
+
+#: task_manager/templates/users/create.html:7
+msgid "SignUp"
 msgstr "Зарегистрировать"
 
-#: task_manager/templates/login.html:6
-msgid "There will be a login form here"
-msgstr "Здесь будет форма для входа"
+#: task_manager/templates/users/delete.html:7
+msgid "Yes, Delete"
+msgstr "Да, удалить"
 
-#: task_manager/templates/users/users.html:12
-#, fuzzy
-#| msgid "Users"
+#: task_manager/templates/users/delete.html:9
+msgid "Delete User"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/index.html:12
 msgid "Username"
-msgstr "Пользователи"
+msgstr "Имя пользователя"
 
-#: task_manager/templates/users/users.html:13
+#: task_manager/templates/users/index.html:13
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/templates/users/users.html:14
+#: task_manager/templates/users/index.html:14
 msgid "Created at"
 msgstr "Дата создания"
 
-#~ msgid "There will be a user creation form here"
-#~ msgstr "Здесь будет форма для создания пользователя"
+#: task_manager/templates/users/index.html:26
+#: task_manager/templates/users/update.html:7
+msgid "Update"
+msgstr "Изменить"
 
-#~ msgid "There will be a list of users here"
-#~ msgstr "Здесь будет список пользователей"
+#: task_manager/templates/users/index.html:28
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/users/update.html:9
+msgid "Update User"
+msgstr "Изменение пользователя"
+
+#: task_manager/views.py:22
+msgid "You have successfully logged in."
+msgstr "Вы залогинены"
+
+#: task_manager/views.py:32
+msgid "You have successfully logged out."
+msgstr "Вы разлогинены"
