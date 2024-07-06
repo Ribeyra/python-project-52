@@ -8,7 +8,7 @@
 
 <h1 class="my-4">{% trans "Update User" %}</h1>
 
-<form action="{% url 'user_update' id=user.id %}" method="post" class="form">
+<form action="{% url 'user_update' pk=user.pk %}" method="post" class="form">
     {% csrf_token %}
 
     {% bootstrap_form form %}

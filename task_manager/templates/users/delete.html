@@ -10,7 +10,7 @@
 
 <p>Вы уверены, что хотите удалить {{ user.first_name }} {{ user.last_name }}?</p>
 
-<form action="{% url 'user_delete' user.id %}" method="post" class="form">
+<form action="{% url 'user_delete' user.pk %}" method="post" class="form">
 
     {% csrf_token %}
 

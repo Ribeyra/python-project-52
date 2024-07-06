@@ -14,7 +14,7 @@ class LoginRequiredAndUserIsSelfMixin(View):
             )
             return redirect('login')
 
-        user_id = kwargs.get('id')
+        user_id = kwargs.get('pk')
         if user_id != request.user.id:
             messages.add_message(
                 request,
