@@ -1,18 +1,21 @@
-from django.shortcuts import redirect
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.utils.translation import gettext as _
-from django.views import View
 
 
-class LoginRequiredAndUserIsSelfMixin(View):
+class LoginRequiredAndUserIsSelfMixin(LoginRequiredMixin):
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
+        response = super().dispatch(request, *args, **kwargs)
+
+        if isinstance(response, HttpResponseRedirect):
             messages.add_message(
                 request,
                 messages.ERROR,
                 _('You are not authorized! Please log in')
             )
-            return redirect('login')
+            return response
 
         user_id = kwargs.get('pk')
         if user_id != request.user.id:
@@ -23,4 +26,4 @@ class LoginRequiredAndUserIsSelfMixin(View):
             )
             return redirect('users')
 
-        return super().dispatch(request, *args, **kwargs)
+        return response
