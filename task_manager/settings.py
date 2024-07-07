@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'task_manager',
     'task_manager.app_user',
+    'task_manager.app_statuses',
     'django_bootstrap5',
     'django_extensions',
 ]

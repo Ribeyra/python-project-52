@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<h1 class="my-4">{% trans "Update Status" %}</h1>
+
+<form action="{% url 'status_update' pk=status.pk %}" method="post" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% trans "Update" as update_text %}
+
+    <input class="btn btn-primary" type="submit" value="{{ update_text }}">
+    
+</form>
+{% endblock %}
