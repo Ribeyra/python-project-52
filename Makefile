@@ -13,3 +13,6 @@ dev-build:
 
 shell:
 	poetry run python manage.py shell_plus --ipython
+
+test:
+	poetry run python manage.py test
