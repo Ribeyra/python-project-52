@@ -7,14 +7,22 @@ from .models import Status
 from .forms import StatusCreationForm
 
 
-class CreateStatus(LoginRequiredMixinWithFlash, SuccessMessageMixin, CreateView):
+class CreateStatus(
+    LoginRequiredMixinWithFlash,
+    SuccessMessageMixin,
+    CreateView
+):
     template_name = 'statuses/create.html'
     form_class = StatusCreationForm
     success_url = reverse_lazy('statuses')
     success_message = _('Status successfully created')
 
 
-class UpdateStatus(LoginRequiredMixinWithFlash, SuccessMessageMixin, UpdateView):
+class UpdateStatus(
+    LoginRequiredMixinWithFlash,
+    SuccessMessageMixin,
+    UpdateView
+):
     model = Status
     form_class = StatusCreationForm
     template_name = 'statuses/update.html'
@@ -22,7 +30,11 @@ class UpdateStatus(LoginRequiredMixinWithFlash, SuccessMessageMixin, UpdateView)
     success_message = _('Status successfully updated')
 
 
-class DeleteStatus(LoginRequiredMixinWithFlash, SuccessMessageMixin, DeleteView):
+class DeleteStatus(
+    LoginRequiredMixinWithFlash,
+    SuccessMessageMixin,
+    DeleteView
+):
     template_name = 'statuses/delete.html'
     model = Status
     success_url = reverse_lazy('statuses')
