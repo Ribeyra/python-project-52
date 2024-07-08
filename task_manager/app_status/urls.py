@@ -1,5 +1,5 @@
 from django.urls import path
-from task_manager.app_statuses import views
+from task_manager.app_status import views
 
 urlpatterns = [
     path('create/', views.CreateStatus.as_view(), name='status_create'),

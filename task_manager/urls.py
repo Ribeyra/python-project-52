@@ -27,6 +27,6 @@ urlpatterns = [
     ), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('users/', include('task_manager.app_user.urls')),
-    path('statuses/', include('task_manager.app_statuses.urls')),
+    path('statuses/', include('task_manager.app_status.urls')),
     path('admin/', admin.site.urls),
 ]

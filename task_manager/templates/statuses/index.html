@@ -2,39 +2,35 @@
 {% load i18n %}
 
 {% block content %}
-<h1 class="my-4">{% trans "Statuses" %}</h1>
+<h1 class="my-4"> {% trans "Statuses" %} </h1>
 
-
-<a class="btn btn-primary" href="{% url 'status_create' %}">{% trans "Create Status" %}</a>
-
-    <!-- <input class="btn btn-primary" type="submit" value="{{ update_text }}"> -->
+<a class="btn btn-primary mb-3" href="{% url 'status_create' %}">{% trans "Create Status" %}</a>
     
-<div class="table table-striped"></div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>{% trans "Name" %}</th>
-                <th>{% trans "Description" %}</th>
-                <th>{% trans "Created at" %}</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for status in statuses %}
-            <tr>
-                <td>{{ status.id }}</td>
-                <td>{{ status.name }}</td>
-                <td>{{ status.description }}</td>
-                <td>{{ status.created_at|date:"d.m.Y" }} {{ status.created_at|time:"H:i" }}</td>
-                <td>
-                    <a href="{% url 'status_update' pk=status.id %}">{% trans "Update" %}</a>
-                    <br>
-                    <a href="{% url 'status_delete' pk=status.id %}">{% trans "Delete" %}</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div> 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Description" %}</th>
+            <th>{% trans "Created at" %}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for status in statuses %}
+        <tr>
+            <td>{{ status.id }}</td>
+            <td>{{ status.name }}</td>
+            <td>{{ status.description|default:'' }}</td>
+            <td>{{ status.created_at|date:"d.m.Y" }} {{ status.created_at|time:"H:i" }}</td>
+            <td>
+                <a href="{% url 'status_update' pk=status.id %}">{% trans "Update" %}</a>
+                <br>
+                <a href="{% url 'status_delete' pk=status.id %}">{% trans "Delete" %}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
