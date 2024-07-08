@@ -14,7 +14,12 @@ class CreateUser(SuccessMessageMixin, CreateView):
     success_message = _('User successfully registered')
 
 
-class UpdateUser(LoginRequiredMixinWithFlash, UserIsSelfMixin, SuccessMessageMixin, UpdateView):
+class UpdateUser(
+    LoginRequiredMixinWithFlash,
+    UserIsSelfMixin,
+    SuccessMessageMixin,
+    UpdateView
+):
     model = get_user_model()
     form_class = CustomUserChangeForm
     template_name = 'users/update.html'
@@ -22,7 +27,12 @@ class UpdateUser(LoginRequiredMixinWithFlash, UserIsSelfMixin, SuccessMessageMix
     success_message = _('User successfully updated')
 
 
-class DeleteUser(LoginRequiredMixinWithFlash, UserIsSelfMixin, SuccessMessageMixin, DeleteView):
+class DeleteUser(
+    LoginRequiredMixinWithFlash,
+    UserIsSelfMixin,
+    SuccessMessageMixin,
+    DeleteView
+):
     template_name = 'users/delete.html'
     model = get_user_model()
     success_url = reverse_lazy('users')
