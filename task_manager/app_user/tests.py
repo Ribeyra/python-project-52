@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
+
 class CreateUserTest(TestCase):
     def test_create_user_view(self):
         url = reverse('user_create')
@@ -23,11 +24,19 @@ class CreateUserTest(TestCase):
             print(response.content)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('login'))
-        self.assertTrue(get_user_model().objects.filter(username='testuser').exists())
+        self.assertTrue(get_user_model().objects.filter(
+            username='testuser'
+        ).exists())
+
 
 class UpdateUserTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser', password='Testpassword123', first_name='Test', last_name='User')
+        self.user = get_user_model().objects.create_user(
+            username='testuser',
+            password='Testpassword123',
+            first_name='Test',
+            last_name='User'
+        )
         self.client.login(username='testuser', password='Testpassword123')
 
     def test_update_user_view(self):
@@ -55,9 +64,13 @@ class UpdateUserTest(TestCase):
         self.assertEqual(self.user.first_name, 'Updated')
         self.assertEqual(self.user.last_name, 'User')
 
+
 class DeleteUserTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser', password='Testpassword123')
+        self.user = get_user_model().objects.create_user(
+            username='testuser',
+            password='Testpassword123'
+        )
         self.client.login(username='testuser', password='Testpassword123')
 
     def test_delete_user_view(self):
@@ -71,11 +84,17 @@ class DeleteUserTest(TestCase):
         response = self.client.post(url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('users'))
-        self.assertFalse(get_user_model().objects.filter(username='testuser').exists())
+        self.assertFalse(get_user_model().objects.filter(
+            username='testuser'
+        ).exists())
+
 
 class UserListViewTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser', password='Testpassword123')
+        self.user = get_user_model().objects.create_user(
+            username='testuser',
+            password='Testpassword123'
+        )
         self.client.login(username='testuser', password='Testpassword123')
 
     def test_user_list_view(self):
