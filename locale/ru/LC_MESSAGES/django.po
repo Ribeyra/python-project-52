@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 19:53+0300\n"
+"POT-Creation-Date: 2024-07-09 21:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,17 +46,21 @@ msgstr "Статус успешно изменен"
 msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
-#: task_manager/app_tag/views.py:18
+#: task_manager/app_tag/views.py:20
 msgid "Tag successfully created"
 msgstr "Метка успешно создана"
 
-#: task_manager/app_tag/views.py:30
+#: task_manager/app_tag/views.py:32
 msgid "Tag successfully updated"
 msgstr "Метка успешно изменена"
 
-#: task_manager/app_tag/views.py:41
+#: task_manager/app_tag/views.py:43
 msgid "Tag deleted successfully"
 msgstr "Метка успешно удалена"
+
+#: task_manager/app_tag/views.py:51
+msgid "Cannot remove tag because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: task_manager/app_task/forms.py:17
 msgid "Title"
@@ -104,17 +108,21 @@ msgstr "Фамилия"
 msgid "Password"
 msgstr "Пароль"
 
-#: task_manager/app_user/views.py:14
+#: task_manager/app_user/views.py:17
 msgid "User successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/app_user/views.py:27
+#: task_manager/app_user/views.py:30
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/app_user/views.py:39
+#: task_manager/app_user/views.py:42
 msgid "User deleted successfully"
 msgstr "Пользователь успешно удален"
+
+#: task_manager/app_user/views.py:50
+msgid "Cannot delete user because it is in use"
+msgstr "Невозможно удалить пользователя, потому что он используется"
 
 #: task_manager/mixins.py:12
 msgid "You are not authorized! Please log in"

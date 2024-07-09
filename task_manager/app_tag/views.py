@@ -1,4 +1,6 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -39,6 +41,18 @@ class DeleteTag(
     model = Tag
     success_url = reverse_lazy('tags')
     success_message = _('Tag deleted successfully')
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # Проверяем, используется ли метка в задачах
+        if self.object.task_tags.all().exists():
+            messages.error(
+                request,
+                _('Cannot remove tag because it is in use')
+            )
+            return redirect(self.success_url)
+        # Если метка не используется в задачах, удаляем её
+        return super().post(request, *args, **kwargs)
 
 
 class TagListView(LoginRequiredMixinWithFlash, ListView):
