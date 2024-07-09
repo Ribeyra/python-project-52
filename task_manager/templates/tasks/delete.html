@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<h1 class="my-4">{% trans "Delete Task" %}</h1>
+
+<p>{% trans "Are you sure you want to delete" %} {{ task.title }}?</p>
+
+<form action="{% url 'task_delete' pk=task.id %}" method="post" class="form">
+
+    {% csrf_token %}
+
+    {% trans "Yes, Delete" as delete_text %}
+
+    <input class="btn btn-danger" type="submit" value="{{ delete_text }}">
+    
+</form>
+{% endblock %}

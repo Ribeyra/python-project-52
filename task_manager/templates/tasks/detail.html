@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<h1 class="my-4">{% trans "View a task" %}</h1>
+
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+      <h2>{{ task.title }}</h2>
+    </div>
+    <div class="card-body bg-light">
+      <p>{{ task.description }}</p>
+      <hr>
+      <div class="container">
+        <div class="row p-1">
+          <div class="col">{% trans "Author" %}</div>
+          <div class="col">{{ task.author }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% trans "Assignee" %}</div>
+          <div class="col">{{ task.assignee }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% trans "Status" %}</div>
+          <div class="col">{{ task.status }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% trans "Created at" %}</div>
+          <div class="col">{{ task.created_at }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">
+            <h6>{% trans "Tags" %}:</h6>
+            
+            <ul>
+                {% for tag in task.tags.all %}
+                <li>{{ tag }}</li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="row p-1">
+          <div class="col">
+            <a href="{% url 'task_update' pk=task.id %}">{% trans "Update" %}</a>
+            <br>
+            <a href="{% url 'task_delete' pk=task.id %}">{% trans "Delete" %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
