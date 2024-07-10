@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<h1 class="my-4">{% trans "Tag create" %}</h1>
+<h1 class="my-4">{% trans "Label create" %}</h1>
 
-<form action="{% url 'tag_create' %}" method="post" class="form">
+<form action="{% url 'label_create' %}" method="post" class="form">
     {% csrf_token %}
 
     {% bootstrap_form form %}

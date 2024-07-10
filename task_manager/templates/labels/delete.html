@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<h1 class="my-4">{% trans "Delete Tag" %}</h1>
+<h1 class="my-4">{% trans "Delete Label" %}</h1>
 
-<p>{% trans "Are you sure you want to delete" %} {{ tag.name }}?</p>
+<p>{% trans "Are you sure you want to delete" %} {{ label.name }}?</p>
 
-<form action="{% url 'tag_delete' pk=tag.id %}" method="post" class="form">
+<form action="{% url 'label_delete' pk=label.id %}" method="post" class="form">
 
     {% csrf_token %}
 

@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 from task_manager.app_task.models import Task
 from task_manager.app_status.models import Status
-from task_manager.app_tag.models import Tag
+from task_manager.app_label.models import Label
 
 
 class TaskTests(TestCase):
@@ -18,7 +18,7 @@ class TaskTests(TestCase):
             name='Open',
             description='Task is open'
         )
-        self.tag = Tag.objects.create(
+        self.label = Label.objects.create(
             name='Urgent',
             description='Urgent task'
         )
@@ -30,7 +30,7 @@ class TaskTests(TestCase):
             assignee=self.user,
             author=self.user
         )
-        self.task.tags.add(self.tag)
+        self.task.labels.add(self.label)
 
     def test_create_task_view(self):
         url = reverse('task_create')
@@ -45,7 +45,7 @@ class TaskTests(TestCase):
             'description': 'New Description',
             'status': self.status.id,
             'assignee': self.user.id,
-            'tags': [self.tag.id]
+            'labels': [self.label.id]
         }
         response = self.client.post(url, task_data)
         self.assertEqual(response.status_code, 302)
@@ -65,7 +65,7 @@ class TaskTests(TestCase):
             'description': 'Updated Description',
             'status': self.status.id,
             'assignee': self.user.id,
-            'tags': [self.tag.id]
+            'labels': [self.label.id]
         }
         response = self.client.post(url, updated_data)
         self.assertEqual(response.status_code, 302)

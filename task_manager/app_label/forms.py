@@ -1,9 +1,9 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Tag
+from .models import Label
 
 
-class TagCreationForm(forms.ModelForm):
+class LabelCreationForm(forms.ModelForm):
     status_name = _("Name")
     name = forms.CharField(label=status_name, max_length=40, required=True)
     status_description = _("Description")
@@ -14,7 +14,7 @@ class TagCreationForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Tag
+        model = Label
         fields = [
             'name',
             'description',

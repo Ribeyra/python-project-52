@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<h1 class="my-4">{% trans "Update Tag" %}</h1>
+<h1 class="my-4">{% trans "Update Label" %}</h1>
 
-<form action="{% url 'tag_update' pk=tag.pk %}" method="post" class="form">
+<form action="{% url 'label_update' pk=label.pk %}" method="post" class="form">
     {% csrf_token %}
 
     {% bootstrap_form form %}

@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from task_manager.app_status.models import Status
 from task_manager.app_user.models import User
-from task_manager.app_tag.models import Tag
+from task_manager.app_label.models import Label
 
 
 class Task(models.Model):
@@ -22,10 +22,10 @@ class Task(models.Model):
         blank=True,
         related_name='assigned_tasks',
     )
-    tags = models.ManyToManyField(
-        Tag,
+    labels = models.ManyToManyField(
+        Label,
         blank=True,
-        related_name='task_tags'
+        related_name='task_labels'
     )
     author = models.ForeignKey(
         User,
