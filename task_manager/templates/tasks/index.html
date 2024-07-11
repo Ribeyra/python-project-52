@@ -1,11 +1,27 @@
 {% extends "layout.html" %}
 {% load i18n %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 <h1 class="my-4"> {% trans "Tasks" %} </h1>
 
 <a class="btn btn-primary mb-3" href="{% url 'task_create' %}" role="button">{% trans "Create Task" %}</a>
-    
+
+<div class="card mb-3">
+    <div class="card-body bg-light">
+      
+        <form method="get" class="form-inline center">
+
+            {% bootstrap_form filter.form %}
+        
+            {% trans "Show" as show_text %}
+        
+            <input class="btn btn-primary" type="submit" value="{{ show_text }}">
+        </form>
+
+    </div>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -25,9 +41,9 @@
             <td>
                 <a href="{% url 'task_view' task.id %}">{{ task.title }}</a>
             </td>
-            <td>{{ task.status__name }}</td>
-            <td>{{ task.author__username }}</td>
-            <td>{{ task.assignee__username|default:'' }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.assignee|default:'' }}</td>
             <td>{{ task.created_at|date:"d.m.Y" }} {{ task.created_at|time:"H:i" }}</td>
             <td>
                 <a href="{% url 'task_update' pk=task.id %}">{% trans "Update" %}</a>

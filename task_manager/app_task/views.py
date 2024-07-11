@@ -1,10 +1,12 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, UpdateView, DeleteView, \
-    ListView, DetailView
+    DetailView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django_filters.views import FilterView
 from task_manager.mixins import LoginRequiredMixinWithFlash, \
     ObjectPermissionMixin
+from .filters import TaskFilter
 from .models import Task
 from .forms import TaskCreationForm
 
@@ -51,24 +53,25 @@ class DeleteTask(
     permission_error_message = _('Only its author can delete a task')
 
 
-class TaskListView(LoginRequiredMixinWithFlash, ListView):
+class TaskListView(LoginRequiredMixinWithFlash, FilterView):
     model = Task
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
 
     def get_queryset(self):
         return self.model.objects.select_related(
             'status',
             'author',
             'assignee'
-        ).values(
-            'id',
-            'title',
-            'status__name',
-            'author__username',
-            'assignee__username',
-            'created_at'
         ).order_by('id')
+
+    def get_filterset(self, filterset_class):
+        return filterset_class(
+            data=self.request.GET,
+            request=self.request,
+            queryset=self.get_queryset()
+        )
 
 
 class TaskDetailView(LoginRequiredMixinWithFlash, DetailView):
