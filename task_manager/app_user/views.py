@@ -65,6 +65,4 @@ class UserListView(ListView):
     context_object_name = 'users'
 
     def get_queryset(self):
-        return self.model.objects.values(
-            'id', 'first_name', 'last_name', 'username', 'date_joined'
-        ).order_by('id')
+        return self.model.objects.order_by('id')
