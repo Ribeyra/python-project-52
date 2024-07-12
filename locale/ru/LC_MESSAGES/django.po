@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-12 17:20+0300\n"
+"POT-Creation-Date: 2024-07-12 19:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,8 +150,8 @@ msgid "You do not have permission to perform this action."
 msgstr "У вас нет разрешения на выполнение этого действия"
 
 #: task_manager/templates/index.html:9
-msgid "surprise motherf***er"
-msgstr "Добрый день!"
+msgid "Hello"
+msgstr "Привет"
 
 #: task_manager/templates/index.html:11
 msgid "I also have github"
@@ -326,10 +326,10 @@ msgstr "Полное имя"
 msgid "Update User"
 msgstr "Изменение пользователя"
 
-#: task_manager/views.py:16
+#: task_manager/views.py:22
 msgid "You have successfully logged in."
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:26
+#: task_manager/views.py:32
 msgid "You have successfully logged out."
 msgstr "Вы разлогинены"
