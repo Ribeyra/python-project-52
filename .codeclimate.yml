@@ -1,0 +1,16 @@
+version: "2"
+exclude_paths:
+  - "*/tests/*"
+  - "*/test_*.py"
+  - "*/migrations/*"
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        python:
+          paths:
+            - "**/*.py"
+ratings:
+  paths:
+    - "**/*.py"
