@@ -18,7 +18,7 @@ class TaskTests(TestCase):
             name='Open',
             description='Task is open'
         )
-        self.label = Label.objects.create(
+        self.labels = Label.objects.create(
             name='Urgent',
             description='Urgent task'
         )
@@ -30,7 +30,7 @@ class TaskTests(TestCase):
             executor=self.user,
             author=self.user
         )
-        self.task.label.add(self.label)
+        self.task.labels.add(self.labels)
 
     def test_create_task_view(self):
         url = reverse('task_create')
@@ -45,7 +45,7 @@ class TaskTests(TestCase):
             'description': 'New Description',
             'status': self.status.id,
             'executor': self.user.id,
-            'label': [self.label.id]
+            'labels': [self.labels.id]
         }
         response = self.client.post(url, task_data)
         self.assertEqual(response.status_code, 302)
@@ -65,7 +65,7 @@ class TaskTests(TestCase):
             'description': 'Updated Description',
             'status': self.status.id,
             'executor': self.user.id,
-            'label': [self.label.id]
+            'labels': [self.labels.id]
         }
         response = self.client.post(url, updated_data)
         self.assertEqual(response.status_code, 302)
@@ -123,11 +123,11 @@ class TaskFilterTests(TestCase):
             description='Closed tasks'
         )
 
-        self.label1 = Label.objects.create(
+        self.labels1 = Label.objects.create(
             name='Bug',
             description='Bug related task'
         )
-        self.label2 = Label.objects.create(
+        self.labels2 = Label.objects.create(
             name='Feature',
             description='Feature related task'
         )
@@ -139,7 +139,7 @@ class TaskFilterTests(TestCase):
             executor=self.user1,
             author=self.user1
         )
-        self.task1.label.add(self.label1)
+        self.task1.labels.add(self.labels1)
 
         self.task2 = Task.objects.create(
             name='Task 2',
@@ -148,7 +148,7 @@ class TaskFilterTests(TestCase):
             executor=self.user2,
             author=self.user2
         )
-        self.task2.label.add(self.label2)
+        self.task2.labels.add(self.labels2)
 
     def test_filter_by_status(self):
         url = reverse('tasks')
@@ -164,9 +164,9 @@ class TaskFilterTests(TestCase):
         self.assertContains(response, 'Task 1')
         self.assertNotContains(response, 'Task 2')
 
-    def test_filter_by_label(self):
+    def test_filter_by_labels(self):
         url = reverse('tasks')
-        response = self.client.get(url, {'label': self.label1.id})
+        response = self.client.get(url, {'labels': self.labels1.id})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Task 1')
         self.assertNotContains(response, 'Task 2')
@@ -183,7 +183,7 @@ class TaskFilterTests(TestCase):
         response = self.client.get(url, {
             'status': self.status1.id,
             'executor': self.user1.id,
-            'label': self.label1.id,
+            'labels': self.labels1.id,
             'self_tasks': 'on'
         })
         self.assertEqual(response.status_code, 200)
