@@ -1,5 +1,5 @@
 version: "2"
-exclude_paths:
+exclude_patterns:
   - "*/tests/*"
   - "*/test_*.py"
   - "*/migrations/*"
