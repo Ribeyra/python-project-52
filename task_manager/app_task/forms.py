@@ -7,14 +7,14 @@ class TaskCreationForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = [
-            'title',
+            'name',
             'description',
             'status',
             'executor',
             'label',
         ]
         labels = {
-            'title': _('Title'),
+            'name': _('Name'),
             'description': _('Description'),
             'status': _('Status'),
             'executor': _('Executor'),

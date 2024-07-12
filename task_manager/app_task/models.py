@@ -6,7 +6,7 @@ from task_manager.app_label.models import Label
 
 
 class Task(models.Model):
-    title = models.CharField(max_length=40, unique=True)
+    name = models.CharField(max_length=40, unique=True)
     description = models.TextField(blank=True, null=True)
     status = models.ForeignKey(
         Status,

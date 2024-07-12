@@ -34,7 +34,7 @@
         <tr>
             <td>{{ task.id }}</td>
             <td>
-                <a href="{% url 'task_view' task.id %}">{{ task.title }}</a>
+                <a href="{% url 'task_view' task.id %}">{{ task.name }}</a>
             </td>
             <td>{{ task.status }}</td>
             <td>{{ task.author }}</td>

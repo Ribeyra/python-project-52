@@ -6,7 +6,7 @@
 
 <h1 class="my-4">{% trans "Delete Task" %}</h1>
 
-<p>{% trans "Are you sure you want to delete" %} {{ task.title }}?</p>
+<p>{% trans "Are you sure you want to delete" %} {{ task.name }}?</p>
 
 <form action="{% url 'task_delete' pk=task.id %}" method="post" class="form">
 

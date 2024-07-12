@@ -24,7 +24,7 @@ class TaskTests(TestCase):
         )
 
         self.task = Task.objects.create(
-            title='Test Task',
+            name='Test Task',
             description='Test Description',
             status=self.status,
             executor=self.user,
@@ -41,7 +41,7 @@ class TaskTests(TestCase):
     def test_create_task(self):
         url = reverse('task_create')
         task_data = {
-            'title': 'New Task',
+            'name': 'New Task',
             'description': 'New Description',
             'status': self.status.id,
             'executor': self.user.id,
@@ -50,7 +50,7 @@ class TaskTests(TestCase):
         response = self.client.post(url, task_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks'))
-        self.assertTrue(Task.objects.filter(title='New Task').exists())
+        self.assertTrue(Task.objects.filter(name='New Task').exists())
 
     def test_update_task_view(self):
         url = reverse('task_update', args=[self.task.pk])
@@ -61,7 +61,7 @@ class TaskTests(TestCase):
     def test_update_task(self):
         url = reverse('task_update', args=[self.task.pk])
         updated_data = {
-            'title': 'Updated Task',
+            'name': 'Updated Task',
             'description': 'Updated Description',
             'status': self.status.id,
             'executor': self.user.id,
@@ -71,7 +71,7 @@ class TaskTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks'))
         self.task.refresh_from_db()
-        self.assertEqual(self.task.title, 'Updated Task')
+        self.assertEqual(self.task.name, 'Updated Task')
         self.assertEqual(self.task.description, 'Updated Description')
 
     def test_delete_task_view(self):
@@ -85,7 +85,7 @@ class TaskTests(TestCase):
         response = self.client.post(url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks'))
-        self.assertFalse(Task.objects.filter(title='Test Task').exists())
+        self.assertFalse(Task.objects.filter(name='Test Task').exists())
 
     def test_task_list_view(self):
         url = reverse('tasks')
@@ -133,7 +133,7 @@ class TaskFilterTests(TestCase):
         )
 
         self.task1 = Task.objects.create(
-            title='Task 1',
+            name='Task 1',
             description='Description 1',
             status=self.status1,
             executor=self.user1,
@@ -142,7 +142,7 @@ class TaskFilterTests(TestCase):
         self.task1.label.add(self.label1)
 
         self.task2 = Task.objects.create(
-            title='Task 2',
+            name='Task 2',
             description='Description 2',
             status=self.status2,
             executor=self.user2,
