@@ -10,16 +10,16 @@ class TaskCreationForm(forms.ModelForm):
             'title',
             'description',
             'status',
-            'assignee',
-            'labels',
+            'executor',
+            'label',
         ]
         labels = {
             'title': _('Title'),
             'description': _('Description'),
             'status': _('Status'),
-            'assignee': _('Assignee'),
-            'labels': _('Labels'),
+            'executor': _('Executor'),
+            'label': _('Labels'),
         }
         widgets = {
-            'labels': forms.SelectMultiple,
+            'label': forms.SelectMultiple,
         }

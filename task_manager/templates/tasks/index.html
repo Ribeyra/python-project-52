@@ -9,16 +9,11 @@
 
 <div class="card mb-3">
     <div class="card-body bg-light">
-      
         <form method="get" class="form-inline center">
-
             {% bootstrap_form filter.form %}
-        
             {% trans "Show" as show_text %}
-        
             <input class="btn btn-primary" type="submit" value="{{ show_text }}">
         </form>
-
     </div>
 </div>
 
@@ -29,7 +24,7 @@
             <th>{% trans "Name" %}</th>
             <th>{% trans "Status" %}</th>
             <th>{% trans "Author" %}</th>
-            <th>{% trans "Assignee" %}</th>
+            <th>{% trans "Executor" %}</th>
             <th>{% trans "Created at" %}</th>
             <th></th>
         </tr>
@@ -43,7 +38,7 @@
             </td>
             <td>{{ task.status }}</td>
             <td>{{ task.author }}</td>
-            <td>{{ task.assignee|default:'' }}</td>
+            <td>{{ task.executor|default:'' }}</td>
             <td>{{ task.created_at|date:"d.m.Y" }} {{ task.created_at|time:"H:i" }}</td>
             <td>
                 <a href="{% url 'task_update' pk=task.id %}">{% trans "Update" %}</a>

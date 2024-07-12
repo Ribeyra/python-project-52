@@ -63,12 +63,12 @@ class TaskListView(LoginRequiredMixinWithFlash, FilterView):
         return self.model.objects.select_related(
             'status',
             'author',
-            'assignee'
+            'executor'
         ).order_by('id')
 
     def get_filterset(self, filterset_class):
         return filterset_class(
-            data=self.request.GET,
+            data=self.request.GET or None,
             request=self.request,
             queryset=self.get_queryset()
         )

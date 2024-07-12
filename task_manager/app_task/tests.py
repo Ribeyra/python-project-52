@@ -27,10 +27,10 @@ class TaskTests(TestCase):
             title='Test Task',
             description='Test Description',
             status=self.status,
-            assignee=self.user,
+            executor=self.user,
             author=self.user
         )
-        self.task.labels.add(self.label)
+        self.task.label.add(self.label)
 
     def test_create_task_view(self):
         url = reverse('task_create')
@@ -44,8 +44,8 @@ class TaskTests(TestCase):
             'title': 'New Task',
             'description': 'New Description',
             'status': self.status.id,
-            'assignee': self.user.id,
-            'labels': [self.label.id]
+            'executor': self.user.id,
+            'label': [self.label.id]
         }
         response = self.client.post(url, task_data)
         self.assertEqual(response.status_code, 302)
@@ -64,8 +64,8 @@ class TaskTests(TestCase):
             'title': 'Updated Task',
             'description': 'Updated Description',
             'status': self.status.id,
-            'assignee': self.user.id,
-            'labels': [self.label.id]
+            'executor': self.user.id,
+            'label': [self.label.id]
         }
         response = self.client.post(url, updated_data)
         self.assertEqual(response.status_code, 302)

@@ -15,14 +15,14 @@ class Task(models.Model):
         blank=False,
         related_name='tasks',
     )
-    assignee = models.ForeignKey(
+    executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name='assigned_tasks',
     )
-    labels = models.ManyToManyField(
+    label = models.ManyToManyField(
         Label,
         blank=True,
         related_name='task_labels'

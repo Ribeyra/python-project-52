@@ -8,37 +8,37 @@ from .models import Task
 
 
 class TaskFilter(django_filters.FilterSet):
-    status__name = django_filters.ModelChoiceFilter(
+    status = django_filters.ModelChoiceFilter(
         label=_('Status'),
         queryset=Status.objects.order_by('id'),
-        empty_label=_('---------')
+        widget=forms.Select(attrs={'class': 'form-select mr-3 ml-2'})
     )
-    assignee__username = django_filters.ModelChoiceFilter(
-        label=_('Assignee'),
+    executor = django_filters.ModelChoiceFilter(
+        label=_('Executor'),
         queryset=User.objects.order_by('id'),
-        empty_label=_('---------')
+        widget=forms.Select(attrs={'class': 'form-select mr-3 ml-2'})
     )
-    labels = django_filters.ModelChoiceFilter(
-        label=_('Labels'),
+    label = django_filters.ModelChoiceFilter(
+        label=_('Label'),
         queryset=Label.objects.order_by('id'),
-        empty_label=_('---------')
+        widget=forms.Select(attrs={'class': 'form-select mr-3 ml-2'})
     )
-    my_tasks = django_filters.BooleanFilter(
-        label=_('My tasks'),
-        method='filter_my_tasks',
-        widget=forms.CheckboxInput,
+    self_tasks = django_filters.BooleanFilter(
+        label=_('Only your tasks'),
+        method='filter_self_tasks',
+        widget=forms.CheckboxInput(attrs={'class': 'mr-3'}),
         required=False
     )
 
     class Meta:
         model = Task
         fields = {
-            'status__name': ['exact'],
-            'assignee__username': ['exact'],
-            'labels': ['exact'],
+            'status': ['exact'],
+            'executor': ['exact'],
+            'label': ['exact'],
         }
 
-    def filter_my_tasks(self, queryset, name, value):
+    def filter_self_tasks(self, queryset, name, value):
         if value:
             return queryset.filter(author=self.request.user)
         return queryset
