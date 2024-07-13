@@ -1,3 +1,4 @@
+from django.db.models import ProtectedError
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
@@ -113,3 +114,17 @@ class ObjectPermissionMixin:
             self.permission_error_message
         )
         return redirect(self.success_url)
+
+
+class ProtectedErrorHandlingMixin:
+    success_url = 'index'
+    protected_error_message = _(
+        'Cannot delete this object because it is in use'
+    )
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(request, self.protected_error_message)
+            return redirect(self.success_url)

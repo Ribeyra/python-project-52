@@ -1,13 +1,10 @@
-from django.db.models import ProtectedError
-from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from task_manager.mixins import LoginRequiredMixinWithFlash, \
-    ObjectPermissionMixin
+    ObjectPermissionMixin, ProtectedErrorHandlingMixin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
@@ -37,6 +34,7 @@ class UpdateUser(
 class DeleteUser(
     LoginRequiredMixinWithFlash,
     ObjectPermissionMixin,
+    ProtectedErrorHandlingMixin,
     SuccessMessageMixin,
     DeleteView
 ):
@@ -47,16 +45,7 @@ class DeleteUser(
     permission_error_message = _(
         'You do not have permission to change another user'
     )
-
-    def post(self, request, *args, **kwargs):
-        try:
-            return super().post(request, *args, **kwargs)
-        except ProtectedError:
-            messages.error(
-                request,
-                _('Cannot delete user because it is in use')
-            )
-            return redirect(self.success_url)
+    protected_error_message = _('Cannot delete user because it is in use')
 
 
 class UserListView(ListView):
