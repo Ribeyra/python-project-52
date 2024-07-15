@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .app_user.forms import CustomAuthenticationForm
+from .user.forms import CustomAuthenticationForm
 from task_manager import views
 
 urlpatterns = [
@@ -26,9 +26,9 @@ urlpatterns = [
         authentication_form=CustomAuthenticationForm
     ), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
-    path('users/', include('task_manager.app_user.urls')),
-    path('statuses/', include('task_manager.app_status.urls')),
-    path('tasks/', include('task_manager.app_task.urls')),
-    path('labels/', include('task_manager.app_label.urls')),
+    path('users/', include('task_manager.user.urls')),
+    path('statuses/', include('task_manager.status.urls')),
+    path('tasks/', include('task_manager.task.urls')),
+    path('labels/', include('task_manager.label.urls')),
     path('admin/', admin.site.urls),
 ]

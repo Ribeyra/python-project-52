@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-12 21:29+0300\n"
+"POT-Creation-Date: 2024-07-15 14:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,135 +20,103 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/app_label/forms.py:7 task_manager/app_status/forms.py:7
-#: task_manager/app_task/forms.py:17
-#: task_manager/templates/labels/index.html:13
+#: task_manager/label/forms.py:7 task_manager/status/forms.py:7
+#: task_manager/task/forms.py:17 task_manager/templates/labels/index.html:13
 #: task_manager/templates/statuses/index.html:13
 #: task_manager/templates/tasks/index.html:24
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/app_label/forms.py:9 task_manager/app_status/forms.py:9
-#: task_manager/app_task/forms.py:18
-#: task_manager/templates/labels/index.html:14
+#: task_manager/label/forms.py:9 task_manager/status/forms.py:9
+#: task_manager/task/forms.py:18 task_manager/templates/labels/index.html:14
 #: task_manager/templates/statuses/index.html:14
 msgid "Description"
 msgstr "Описание"
 
-#: task_manager/app_label/views.py:20
+#: task_manager/label/views.py:20
 msgid "Label successfully created"
 msgstr "Метка успешно создана"
 
-#: task_manager/app_label/views.py:32
+#: task_manager/label/views.py:32
 msgid "Label successfully updated"
 msgstr "Метка успешно изменена"
 
-#: task_manager/app_label/views.py:43
+#: task_manager/label/views.py:43
 msgid "Label deleted successfully"
 msgstr "Метка успешно удалена"
 
-#: task_manager/app_label/views.py:51
+#: task_manager/label/views.py:51
 msgid "Cannot remove label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: task_manager/app_status/views.py:21
+#: task_manager/mixins.py:13
+msgid "You are not authorized! Please log in"
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
+
+#: task_manager/mixins.py:44
+msgid "You do not have permission to perform this action."
+msgstr "У вас нет разрешения на выполнение этого действия"
+
+#: task_manager/mixins.py:95
+msgid "Cannot delete this object because it is in use"
+msgstr "Невозможно удалить этот объект, потому что он используется"
+
+#: task_manager/status/views.py:19
 msgid "Status successfully created"
 msgstr "Статус успешно создан"
 
-#: task_manager/app_status/views.py:33
+#: task_manager/status/views.py:31
 msgid "Status successfully updated"
 msgstr "Статус успешно изменен"
 
-#: task_manager/app_status/views.py:44
+#: task_manager/status/views.py:43
 msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
-#: task_manager/app_status/views.py:52
+#: task_manager/status/views.py:44
 msgid "Cannot delete status because it is in use"
 msgstr "Невозможно удалить статус, потому что он используется"
 
-#: task_manager/app_task/filters.py:12 task_manager/app_task/forms.py:19
+#: task_manager/task/filters.py:12 task_manager/task/forms.py:19
 #: task_manager/templates/tasks/detail.html:26
 #: task_manager/templates/tasks/index.html:25
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/app_task/filters.py:17 task_manager/app_task/forms.py:20
+#: task_manager/task/filters.py:17 task_manager/task/forms.py:20
 #: task_manager/templates/tasks/detail.html:22
 #: task_manager/templates/tasks/index.html:27
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/app_task/filters.py:22
-#: task_manager/templates/tasks/detail.html:35
+#: task_manager/task/filters.py:22 task_manager/templates/tasks/detail.html:35
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/app_task/filters.py:27
+#: task_manager/task/filters.py:27
 msgid "Only your tasks"
 msgstr "Только свои задачи"
 
-#: task_manager/app_task/forms.py:21 task_manager/templates/labels/index.html:5
+#: task_manager/task/forms.py:21 task_manager/templates/labels/index.html:5
 #: task_manager/templates/layout.html:31
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/app_task/views.py:22
+#: task_manager/task/views.py:22
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: task_manager/app_task/views.py:38
+#: task_manager/task/views.py:38
 msgid "Task successfully updated"
 msgstr "Задача успешно изменена"
 
-#: task_manager/app_task/views.py:50
+#: task_manager/task/views.py:50
 msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
-#: task_manager/app_task/views.py:53 task_manager/mixins.py:37
+#: task_manager/task/views.py:53
 msgid "Only its author can delete a task"
 msgstr "Задачу может удалить только ее автор"
-
-#: task_manager/app_user/forms.py:8 task_manager/app_user/forms.py:29
-msgid "First name"
-msgstr "Имя"
-
-#: task_manager/app_user/forms.py:12 task_manager/app_user/forms.py:33
-msgid "Last name"
-msgstr "Фамилия"
-
-#: task_manager/app_user/forms.py:67
-msgid "Password"
-msgstr "Пароль"
-
-#: task_manager/app_user/views.py:18
-msgid "User successfully registered"
-msgstr "Пользователь успешно зарегистрирован"
-
-#: task_manager/app_user/views.py:31
-msgid "User successfully updated"
-msgstr "Пользователь успешно изменен"
-
-#: task_manager/app_user/views.py:33 task_manager/app_user/views.py:48
-#: task_manager/mixins.py:24
-msgid "You do not have permission to change another user"
-msgstr "У вас нет прав для изменения другого пользователя"
-
-#: task_manager/app_user/views.py:46
-msgid "User deleted successfully"
-msgstr "Пользователь успешно удален"
-
-#: task_manager/app_user/views.py:57
-msgid "Cannot delete user because it is in use"
-msgstr "Невозможно удалить пользователя, потому что он используется"
-
-#: task_manager/mixins.py:12
-msgid "You are not authorized! Please log in"
-msgstr "Вы не авторизованы! Пожалуйста, выполните вход"
-
-#: task_manager/mixins.py:70
-msgid "You do not have permission to perform this action."
-msgstr "У вас нет разрешения на выполнение этого действия"
 
 #: task_manager/templates/index.html:9
 msgid "Hello"
@@ -327,10 +295,42 @@ msgstr "Полное имя"
 msgid "Update User"
 msgstr "Изменение пользователя"
 
-#: task_manager/views.py:22
+#: task_manager/user/forms.py:8 task_manager/user/forms.py:29
+msgid "First name"
+msgstr "Имя"
+
+#: task_manager/user/forms.py:12 task_manager/user/forms.py:33
+msgid "Last name"
+msgstr "Фамилия"
+
+#: task_manager/user/forms.py:67
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/user/views.py:15
+msgid "User successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/user/views.py:28
+msgid "User successfully updated"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/user/views.py:30 task_manager/user/views.py:46
+msgid "You do not have permission to change another user"
+msgstr "У вас нет прав для изменения другого пользователя"
+
+#: task_manager/user/views.py:44
+msgid "User deleted successfully"
+msgstr "Пользователь успешно удален"
+
+#: task_manager/user/views.py:48
+msgid "Cannot delete user because it is in use"
+msgstr "Невозможно удалить пользователя, потому что он используется"
+
+#: task_manager/views.py:16
 msgid "You have successfully logged in."
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:32
+#: task_manager/views.py:26
 msgid "You have successfully logged out."
 msgstr "Вы разлогинены"

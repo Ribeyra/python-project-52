@@ -15,33 +15,6 @@ class LoginRequiredMixinWithFlash(LoginRequiredMixin):
         return redirect('login')
 
 
-class UserIsSelfMixin:
-    def dispatch(self, request, *args, **kwargs):
-        user_id = kwargs.get('pk')
-        if user_id != request.user.id:
-            messages.add_message(
-                request,
-                messages.ERROR,
-                _('You do not have permission to change another user')
-            )
-            return redirect('users')
-        return super().dispatch(request, *args, **kwargs)
-
-
-class TaskDeletePermissionMixin:
-    def dispatch(self, request, *args, **kwargs):
-        obj = self.get_object()
-        if obj.author != request.user:
-            messages.add_message(
-                request,
-                messages.ERROR,
-                _('Only its author can delete a task')
-            )
-            return redirect('tasks')
-        return super().dispatch(request, *args, **kwargs)
-
-
-# Объединил два предыдущих миксина в один, более универсальный
 class ObjectPermissionMixin:
     """
     Mixin to enforce object-level permissions based on a user attribute.

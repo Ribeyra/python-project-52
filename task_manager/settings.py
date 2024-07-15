@@ -49,10 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task_manager',
-    'task_manager.app_user',
-    'task_manager.app_status',
-    'task_manager.app_task',
-    'task_manager.app_label',
+    'task_manager.user',
+    'task_manager.status',
+    'task_manager.task',
+    'task_manager.label',
     'django_bootstrap5',
     'django_extensions',
 ]
@@ -127,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'app_user.User'
+AUTH_USER_MODEL = 'user.User'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
