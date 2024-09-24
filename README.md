@@ -10,7 +10,7 @@
   
 **Project Description:**
   
-[Task Manager](https://python-project-52-b9sw.onrender.com/) is a task management system. It allows you to set tasks, assign performers and change their statuses. To work with the system, registration and authentication are required:  
+[Task Manager](http://task_manager.ribeyra.ru/) is a task management system. It allows you to set tasks, assign performers and change their statuses. To work with the system, registration and authentication are required:  
   
 ![Register form](https://raw.githubusercontent.com/Ribeyra/assets/main/screenshots/tm_register.png)  
   
